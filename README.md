@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ``` ruby
 require 'elipsa'
-include Elipsa
+extend Elipsa
 
 # it leaves short strings alone
 elipsa("a short string", length: 20)
@@ -37,8 +37,8 @@ elipsa("supercalifragilisticexpialidocious", length: 20)
 # => "supercalifragilis..."
 
 # and it never chops when it doesn't need to.
-elipsa("words have meaning.", length: 20)
-# => "words have meaning."
+elipsa("nineteen characters", length: 20)
+# => "nineteen characters"
 ```
 
 ## Contributing
