@@ -21,7 +21,7 @@ module Elipsa
   #   is broken mid-word instead.
   def elipsa(str, options = {})
     max_length = options.fetch(:length) { 80 }
-    return str if str.length < max_length
+    return str if str.length <= max_length
 
     symbol = options.fetch(:symbol) { '...' }
     available = max_length - symbol.length
