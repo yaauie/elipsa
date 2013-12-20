@@ -4,6 +4,11 @@ Elipsa is a tool for conditionally and smartly truncating a string to a
 specific length. It pays attention to word-boundaries, and tries to give
 you as much of the string as it can, while still fitting your parameters.
 
+The name of this gem is derived from the Serbo-Croatian [`елипса`][elipsa],
+which can be translated directly to English `ellipsis`.
+
+[elipsa]: http://en.wiktionary.org/wiki/elipsa
+
 ## Installation
 
 Add this line to your application's Gemfile:
