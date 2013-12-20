@@ -27,7 +27,7 @@ Or install it yourself as:
 
 `Elipsa` is a tool for conditionally and smartly truncating a string to a specific length. It pays attention to word-boundaries, and tries to give you as much of the string as it can, while still fitting your parameters.
 
-``` ruby
+~~~ ruby
 require 'elipsa'
 extend Elipsa # (note: `self` is `main`)
 
@@ -46,7 +46,7 @@ elipsa("supercalifragilisticexpialidocious", length: 20)
 # and it never chops when it doesn't need to.
 elipsa("nineteen characters", length: 20)
 # => "nineteen characters"
-```
+~~~
 
 ## Advanced Usage
 
