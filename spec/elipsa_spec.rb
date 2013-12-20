@@ -49,6 +49,15 @@ describe Elipsa do
       it_should_behave_like :elipsa
     end
 
+    context 'trim punctuation' do
+      let(:input) { 'Let\'s go fly a kite, up to the highest height'  }
+      #                                  ^ this comma should not be included
+      let(:length) { 24 }
+      let(:expected) { 'Let\'s go fly a kite...' }
+
+      it_should_behave_like :elipsa
+    end
+
     context 'alternate symbol' do
       before(:each) { params.merge!(symbol: '…') }
 

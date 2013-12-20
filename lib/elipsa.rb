@@ -27,7 +27,7 @@ module Elipsa
     available = max_length - symbol.length
     ratio = options.fetch(:ratio) { Rational(7, 8) }
 
-    substr = str[/\A(.{0,#{available}})(?=\s+|$)/mu] || ''
+    substr = str[/\A(.{0,#{available}})(?=\b\W+|$)/mu] || ''
 
     if Rational(substr.length, available) < ratio
       substr = str[0...available]
