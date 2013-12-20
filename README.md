@@ -25,7 +25,9 @@ Or install it yourself as:
 
 ## Usage
 
-`Elipsa` is a tool for conditionally and smartly truncating a string to a specific length. It pays attention to word-boundaries, and tries to give you as much of the string as it can, while still fitting your parameters.
+`Elipsa` is a tool for conditionally and smartly truncating a string to a
+specific length. It pays attention to word-boundaries, and tries to give
+you as much of the string as it can, while still fitting your parameters.
 
 ~~~ ruby
 require 'elipsa'
@@ -64,7 +66,8 @@ elipsa(lorem_ipsum, length: 25)
 
 ### Symbol
 
-The `:symbol` parameter is optional and defaults to the three-character sequence `...`.
+The `:symbol` parameter is optional and defaults to the three-character
+sequence `...`.
 
 ~~~ ruby
 elipsa(lorem_ipsum, length: 20)
@@ -76,7 +79,10 @@ elipsa(lorem_ipsum, symbol: '…', length: 20)
 
 ### Ratio
 
-The `:ratio` parameter is option and defaults to the rational `7/8`. This parameter helps elipsa know when to abandon word-boundary splitting and just show as much as possible. If word-split-lenght:desired-length ratio falls below the `:ratio`, word-split is not used.
+The `:ratio` parameter is option and defaults to the rational `7/8`. This
+parameter helps elipsa know when to abandon word-boundary splitting and just
+show as much as possible. If `word-split-length`:`desired-length` ratio
+falls below the `:ratio`, word-split is not used.
 
 ~~~ ruby
 # without ratio support, too much could get truncated when there is no
