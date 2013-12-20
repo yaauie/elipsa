@@ -11,7 +11,8 @@ end
 describe Elipsa do
   context '#elipsa' do
     let(:length) { 20 }
-    let(:return_value) { Elipsa::elipsa(input, length: length)}
+    let(:params) { {length: length} }
+    let(:return_value) { Elipsa::elipsa(input, params)}
 
     context 'a short string' do
       let(:input) { 'a short string' }
@@ -44,6 +45,16 @@ describe Elipsa do
     context 'one less' do
       let(:input) { 'nineteen characters' }
       let(:expected) { input }
+
+      it_should_behave_like :elipsa
+    end
+
+    context 'alternate symbol' do
+      before(:each) { params.merge!(symbol: '…') }
+
+      let(:input) { 'lorem ipsum dolor sit' }
+      # with default symbol '...', this would be 'lorem ipsum...'
+      let(:expected) { 'lorem ipsum dolor…' }
 
       it_should_behave_like :elipsa
     end
