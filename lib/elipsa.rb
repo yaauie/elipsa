@@ -18,7 +18,7 @@ module Elipsa
   #   This ensures that if a word-boundary is
   #   not found close enough to your length
   #   to make the result meaningful, the string
-  #   is broken mid-word instead.
+  #   is broken mid-word instead. 
   def elipsa(str, options = {})
     max_length = options.fetch(:length) { 80 }
     return str if str.length <= max_length
@@ -37,6 +37,7 @@ module Elipsa
   end
 
   # Extend into a String, or
+  # if you're feeling ambitious,
   # include globally into String
   module String
     # Passes self as first argument to Elipsa::elipsa

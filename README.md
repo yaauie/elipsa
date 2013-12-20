@@ -1,6 +1,8 @@
 # Elipsa
 
-TODO: Write a gem description
+Elipsa is a tool for conditionally and smartly truncating a string to a
+specific length. It pays attention to word-boundaries, and tries to give
+you as much of the string as it can, while still fitting your parameters.
 
 ## Installation
 
@@ -22,7 +24,7 @@ Or install it yourself as:
 
 ``` ruby
 require 'elipsa'
-extend Elipsa
+extend Elipsa # (note: `self` is `main`)
 
 # it leaves short strings alone
 elipsa("a short string", length: 20)
@@ -40,6 +42,46 @@ elipsa("supercalifragilisticexpialidocious", length: 20)
 elipsa("nineteen characters", length: 20)
 # => "nineteen characters"
 ```
+
+## Advanced Usage
+
+### Length
+
+The `:length` parameter is optional and defaults to 80 characters.
+
+~~~ ruby
+elipsa(lorem_ipsum)
+# => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis semper..."
+
+elipsa(lorem_ipsum, length: 25)
+# => "Lorem ipsum dolor sit..."
+~~~
+
+### Symbol
+
+The `:symbol` parameter is optional and defaults to the three-character sequence `...`.
+
+~~~ ruby
+elipsa(lorem_ipsum, length: 20)
+# => "Lorem ipsum..."
+
+elipsa(lorem_ipsum, symbol: '…', length: 20)
+# => "Lorem ipsum dolor…"
+~~~
+
+### Ratio
+
+The `:ratio` parameter is option and defaults to the rational `7/8`. This parameter helps elipsa know when to abandon word-boundary splitting and just show as much as possible. If word-split-lenght:desired-length ratio falls below the `:ratio`, word-split is not used.
+
+~~~ ruby
+# without ratio support, too much could get truncated when there is no
+# word boundary near the desired length.
+elipsa("the word is supercalifragilisticexpialidocious", length: 40, ratio: 0)
+# => "the word is..."
+
+elipsa("merge branch feature/ISSUE-12345/fix-important-issue", length: 40)
+# => "the word is supercalifragilisticexpia..."
+~~~
 
 ## Contributing
 
